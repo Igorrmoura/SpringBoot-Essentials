@@ -1,4 +1,4 @@
-package br.com.Igor.spring_boot_essentials.model;
+package br.com.Igor.spring_boot_essentials.dto;
 
 import lombok.*;
 
@@ -10,11 +10,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString
 @Builder
-public class ProdutoEntity {
+public class ProdutoDto {
 
-    private Integer id;
     private String name;
     private BigDecimal price;
     private Integer amount;
-
 }
