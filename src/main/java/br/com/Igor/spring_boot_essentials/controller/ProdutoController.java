@@ -2,6 +2,7 @@ package br.com.Igor.spring_boot_essentials.controller;
 
 
 import br.com.Igor.spring_boot_essentials.dto.ProdutoDto;
+import br.com.Igor.spring_boot_essentials.exceptions.NotFoundException;
 import br.com.Igor.spring_boot_essentials.model.ProdutoEntity;
 import br.com.Igor.spring_boot_essentials.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
@@ -30,14 +31,15 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ProdutoEntity updateProduct (@PathVariable Integer id, @RequestBody ProdutoDto produtoDto) {
+    @ResponseStatus(HttpStatus.OK)
+    public ProdutoEntity updateProduct (@PathVariable Integer id, @RequestBody ProdutoDto produtoDto)
+    throws NotFoundException {
         return produtoService.atualizarProduto(produtoDto, id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ProdutoEntity removeProduct (@PathVariable Integer id, @RequestBody ProdutoDto produtoDto) {
-        return produtoService.atualizarProduto(produtoDto, id);
+    public void deleteProduct(@PathVariable Integer id) {
+        produtoService.removerProduto(id);
     }
 }

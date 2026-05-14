@@ -1,6 +1,7 @@
 package br.com.Igor.spring_boot_essentials.service;
 
 import br.com.Igor.spring_boot_essentials.dto.ProdutoDto;
+import br.com.Igor.spring_boot_essentials.exceptions.NotFoundException;
 import br.com.Igor.spring_boot_essentials.model.ProdutoEntity;
 import org.springframework.stereotype.Service;
 
@@ -61,12 +62,12 @@ public class ProdutoService {
 
         return novoProduto;
     }
-    public ProdutoEntity atualizarProduto (ProdutoDto produtoDto, Integer id) {
+    public ProdutoEntity atualizarProduto (ProdutoDto produtoDto, Integer id) throws NotFoundException {
 
         ProdutoEntity produto = PRODUTOS.stream()
                 .filter(p -> p.getId().equals(id))
                 .findAny()
-                .orElseThrow(() -> new RuntimeException("produto não encontrado"));
+                .orElseThrow(() -> new NotFoundException("produto não encontrado"));
 
         produto.setName(produto.getName());
         produto.setPrice(produto.getPrice());
