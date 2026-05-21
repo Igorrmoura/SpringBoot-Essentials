@@ -6,22 +6,24 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "avaliações fisicas")
+@Table(name = "exercicio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class AvaliacoesFisicasEntity {
+public class ExercicioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(nullable = false)
-    private BigDecimal peso;
-    @Column(nullable = false)
-    private BigDecimal altura;
-    @Column(name = "porcentagem_Gordura_Corporal")
-    private BigDecimal porcentagemDeGorduraCorporal;
+    private String nome;
+
+    @Column(name = "grupo muscular", nullable = false)
+    private String grupo;
 
 }
+
+
