@@ -22,7 +22,7 @@ public class ExercicioEntity {
     private String nome;
 
     @Column(name = "grupo muscular", nullable = false)
-    private String grupo;
+    private String grupoMuscular;
 
 }
 
