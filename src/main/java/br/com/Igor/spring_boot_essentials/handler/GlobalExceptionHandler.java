@@ -1,5 +1,6 @@
 package br.com.Igor.spring_boot_essentials.handler;
 
+import br.com.Igor.spring_boot_essentials.exceptions.BadRequestException;
 import br.com.Igor.spring_boot_essentials.exceptions.ErrorResponse;
 import br.com.Igor.spring_boot_essentials.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -19,5 +20,23 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadFoundException(BadRequestException ex) {
+        ErrorResponse response = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .status(String.valueOf(HttpStatus.BAD_REQUEST.value()))
+                .build();
 
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleException(Exception ex) {
+        ErrorResponse response = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .status(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
 }

@@ -28,9 +28,9 @@ public class AlunosEntity {
     @Column(name = "porcentagem_Gordura_Corporal")
     private BigDecimal porcentagemDeGorduraCorporal;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "avaliacao_fisica_id")
-    private AvaliacoesFisicasEntity avaliacoesFisicasEntity;
+    private AvaliacoesFisicasEntity avaliacoesFisicas;
 
     @OneToMany(mappedBy = "aluno")
     private Set<TreinosEntity> treinos = new HashSet<>();
