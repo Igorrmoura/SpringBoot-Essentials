@@ -23,7 +23,7 @@ public class AvaliacaoService {
                .orElseThrow(() -> new NotFoundException("Aluno não encontrado"));
 
         AvaliacoesFisicasEntity avaliacaoFisica = aluno.getAvaliacoesFisicas();
-        if (avaliacaoFisica == null) {
+        if (avaliacaoFisica  != null) {
             throw new BadRequestException("Avaliação física já cadastrada para o aluno");
         }
         avaliacaoFisica = AvaliacoesFisicasEntity.builder()

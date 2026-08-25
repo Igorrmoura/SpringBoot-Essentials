@@ -15,8 +15,6 @@ import java.math.BigDecimal;
 public class AvaliacaoFisicaDTO {
 
     @NotNull
-    private Integer id;
-    @NotNull
     private Integer alunoId;
     @NotNull
     private BigDecimal peso;

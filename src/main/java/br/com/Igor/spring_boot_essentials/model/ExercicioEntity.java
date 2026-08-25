@@ -21,7 +21,7 @@ public class ExercicioEntity {
     @Column(nullable = false)
     private String nome;
 
-    @Column(name = "grupo_muscular", nullable = false)
+    @Column(name = "grupo muscular", nullable = false)
     private String grupoMuscular;
 
 }

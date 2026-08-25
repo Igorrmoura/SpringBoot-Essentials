@@ -25,14 +25,13 @@ public class AlunosEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "porcentagem_Gordura_Corporal")
-    private BigDecimal porcentagemDeGorduraCorporal;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    // LAZY: Carrega a avaliação física apenas quando acessada.
+    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
     @JoinColumn(name = "avaliacao_fisica_id")
     private AvaliacoesFisicasEntity avaliacoesFisicas;
 
-    @OneToMany(mappedBy = "aluno")
+    // LAZY: Carrega os treinos apenas quando necessário, evitando sobrecarga de dados.
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private Set<TreinosEntity> treinos = new HashSet<>();
 
 }

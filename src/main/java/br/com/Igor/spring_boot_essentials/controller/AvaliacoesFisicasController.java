@@ -22,5 +22,5 @@ public class AvaliacoesFisicasController {
     public void criarAvaliacao(@Valid @RequestBody AvaliacaoFisicaDTO avaliacaoFisicaDTO) throws NotFoundException, BadRequestException {
         avaliacaoService.criarAvaliacao(avaliacaoFisicaDTO);
     }
-   
+
 }
