@@ -8,6 +8,7 @@ import br.com.Igor.spring_boot_essentials.exceptions.NotFoundException;
 import br.com.Igor.spring_boot_essentials.service.AvaliacaoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,11 @@ public class AvaliacoesFisicasController {
     @ResponseStatus(HttpStatus.OK)
     public List<AvaliacoesFisicasProjection> getAllAvaliacoes() {
         return avaliacaoService.getAvaliacoes();
+    }
+    @GetMapping("/page/{page}/size/{size}")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<AvaliacoesFisicasProjection> getAllAvaliacoesPageble(@PathVariable Integer page, @PathVariable Integer size) {
+        return avaliacaoService.getAllAvaliacoesPageble(page, size);
     }
 
 }

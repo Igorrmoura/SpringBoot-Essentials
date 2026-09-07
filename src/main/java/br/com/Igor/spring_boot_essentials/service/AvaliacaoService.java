@@ -10,6 +10,8 @@ import br.com.Igor.spring_boot_essentials.model.AvaliacoesFisicasEntity;
 import br.com.Igor.spring_boot_essentials.repository.IAlunosRepository;
 import br.com.Igor.spring_boot_essentials.repository.IAvaliacoesFisicasRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,9 @@ public class AvaliacaoService {
 
     public List<AvaliacoesFisicasProjection> getAvaliacoes() {
         return avaliacoesFisicasRepository.getAllAvaliacoes();
+    }
+
+    public Page<AvaliacoesFisicasProjection> getAllAvaliacoesPageble(Integer page, Integer size) {
+        return avaliacoesFisicasRepository.getAllAvaliacoesPageble(PageRequest.of(page, size));
     }
 }
