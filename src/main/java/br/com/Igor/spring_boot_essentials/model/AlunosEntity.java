@@ -26,7 +26,7 @@ public class AlunosEntity {
     private String email;
 
     // LAZY: Carrega a avaliação física apenas quando acessada.
-    @OneToOne(cascade = CascadeType.ALL,  fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "avaliacao_fisica_id")
     private AvaliacoesFisicasEntity avaliacoesFisicas;
 
