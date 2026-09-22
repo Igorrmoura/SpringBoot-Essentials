@@ -1,0 +1,4 @@
+package br.com.Igor.spring_boot_essentials.config;
+
+public class JwtAuthenticationFilter {
+}

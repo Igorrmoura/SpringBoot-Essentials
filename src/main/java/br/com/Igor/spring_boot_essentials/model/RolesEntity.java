@@ -1,10 +1,10 @@
 package br.com.Igor.spring_boot_essentials.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 import org.jspecify.annotations.Nullable;
-import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
@@ -22,6 +22,6 @@ public class RolesEntity implements GrantedAuthority {
 
     @Override
     public @Nullable String getAuthority() {
-        return "";
+        return nome;
     }
 }
