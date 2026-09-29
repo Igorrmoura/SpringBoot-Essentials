@@ -55,7 +55,7 @@ public class TokenProvider {
     }
 
     //extrair informaçoes do token
-    private String getUsername(String token) {
+    public String getUsername(String token) {
        return getClaims(token).getSubject();
     }
 
